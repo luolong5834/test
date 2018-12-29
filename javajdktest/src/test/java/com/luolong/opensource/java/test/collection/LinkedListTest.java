@@ -11,6 +11,7 @@ import java.util.LinkedList;
 /** 1，linkedlist的优劣势 fori循环特别慢
  *  2，linkedlist随机删除，如果数据量过100万，优势比较铭心啊，主要还是看插入的index的大小，
  *  3，顺序添加，顺序遍历，和arraylist速度差不多
+ *  4,相对来讲，arraylist的常数因子比linkedlist的常熟因子要小
  * <p></p>
  *
  * @author luolong
@@ -127,6 +128,7 @@ public class LinkedListTest {
     /**
      * linkedlist和arraylist 顺序插入
      * 1，顺序插入时间复杂度差不多
+     *
      * @author long.luo
      * @date 2018/12/24
      * @param []
@@ -139,14 +141,14 @@ public class LinkedListTest {
         //add 1 万个 element both
         StopWatch stopWatch1 = new StopWatch();
         stopWatch1.start();
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < 100000; i++) {
             linkedList.add(i);
         }
         stopWatch1.stop();
 
         StopWatch stopWatch2 = new StopWatch();
         stopWatch2.start();
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < 100000; i++) {
             arrayList.add(i);
         }
         stopWatch2.stop();
