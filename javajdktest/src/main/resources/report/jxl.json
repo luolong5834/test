@@ -1,0 +1,688 @@
+{
+  "report": {
+    "token": "2933b2583afa4e59b6d6ceef4d1f2f51",
+    "update_time": "2015-02-17 11:51:57",
+    "rpt_id": "201605121148577280",
+    "version": "4.2"
+  },
+  "application_check": [
+    {
+      "app_point": "user_name",
+      "check_points": {
+        "key_value": "梅西"
+      }
+    },
+    {
+      "app_point": "id_card",
+      "check_points": {
+        "key_value": "510108**0317",
+        "gender": "男",
+        "age": "29",
+        "province": "上海市",
+        "city": "上海市",
+        "rgion": "静安区",
+        "court_blacklist": {
+          "arised": true,
+          "black_type": [
+            "政府机关"
+          ]
+        },
+        "financial_blacklist": {
+          "arised": true,
+          "black_type": [
+            "线上消费金融",
+            "线上信用现金贷"
+          ]
+        }
+      }
+    },
+    {
+      "app_point": "cell_phone",
+      "check_points": {
+        "key_value": "136****1373",
+        "website": "上海移动",
+        "reliability": "实名认证",
+        "reg_time": "2014-10-05 10:18:21",
+        "check_name": "用户姓名与运营商提供的姓名[*西]匹配成功",
+        "check_idcard": "用户身份证号与运营商提供的身份证号码[510108**0317 ]匹配成功",
+        "check_ebusiness": "该号码在电商里面使用过[12]个月，共[6]次",
+        "financial_blacklist": {
+          "arised": true,
+          "black_type": [
+            "线上消费金融",
+            "线上信用现金贷"
+          ]
+        }
+      }
+    },
+    {
+      "app_point": "home_addr",
+      "check_points": {
+        "key_value": "上海XX区XX路16号",
+        "check_addr": "居住地址可通过地图定位技术精确定位到，坐标(108.2132132E，36.56246465N)",
+        "check_ebusiness": "居住地址在电商里面使用过[4]个月，共[5]次"
+      }
+    },
+    {
+      "app_point": "home_phone",
+      "check_points": {
+        "key_value": "0211111222 ",
+        "check_mobile": "有家庭电话的通话记录，[3]次[11.2]分钟，按时长计算排名第[11]位"
+      }
+    },
+    {
+      "app_point": "contact",
+      "check_points": {
+        "key_value": "156****56149",
+        "relationship": "配偶",
+        "contact_name": "安东内拉",
+        "check_xiaohao": "该联系人号码非临时小号",
+        "check_mobile": "[100]天内联系[15]次，共[130]分钟，按时长计算排名第[1]位"
+      }
+    },
+    {
+      "app_point": "contact",
+      "check_points": {
+        "key_value": "131****15689",
+        "relationship": "朋友",
+        "contact_name": "马拉多纳",
+        "check_xiaohao": "该联系人号码非临时小号",
+        "check_mobile": "[100]天内联系[1]次，共[5]分钟，按时长计算排名第[44]位"
+      }
+    },
+    {
+      "app_point": "taobao",
+      "check_points": {
+        "key_value": "KY54456465",
+        "reliability": "实名认证",
+        "reg_time": "2016-01-27 23:44:00"
+      }
+    },
+    {
+      "app_point": "jingdong",
+      "check_points": {
+        "key_value": "wxr199d32",
+        "reliability": "实名认证",
+        "reg_time": "2016-01-27 23:44:00"
+      }
+    }
+  ],
+  "user_info_check": {
+    "check_search_info": {
+      "searched_org_cnt": 7,
+      "searched_org_type": [
+        "线上信用现金贷",
+        "线上消费分期",
+        "线下消费分期",
+        "其它"
+      ],
+      "idcard_with_other_names": [
+        "张三",
+        "李四",
+        "王五"
+      ],
+      "idcard_with_other_phones": [
+        "156*3149",
+        "177*9875"
+      ],
+      "phone_with_other_names": [
+        "张三",
+        "李四",
+        "王五"
+      ],
+      "phone_with_other_idcards": [
+        "370783*6785",
+        "332526*0914"
+      ],
+      "register_org_cnt": 22,
+      "register_org_type": [
+        "线上信用现金贷",
+        "线上消费分期",
+        "线下消费分期",
+        "其它"
+      ],
+      "arised_open_web": [
+        "么么贷吧",
+        "分期吧"
+      ]
+    },
+    "check_black_info": {
+      "phone_gray_score": 13,
+      "contacts_class1_blacklist_cnt": 1,
+      "contacts_class2_blacklist_cnt": 56,
+      "contacts_class1_cnt": 92,
+      "contacts_router_cnt": 33,
+      "contacts_router_ratio": 0.35
+    }
+  },
+  "behavior_check": [
+    {
+      "check_point": "regular_circle",
+      "check_point_cn": "朋友圈在哪里",
+      "result": "朋友圈主要活跃在上海地区(居住地)",
+      "evidence": "上海地区通话时间占比为52%",
+      "score": 1
+    },
+    {
+      "check_point": "phone_used_time",
+      "check_point_cn": "号码使用时间",
+      "result": "长期使用(24个月以上，包含24)",
+      "evidence": "根据号码[136*1373]运营商提供的认证时间,推算该号码使用31个月",
+      "score": 1
+    },
+    {
+      "check_point": "phone_silent",
+      "check_point_cn": "手机静默情况",
+      "result": "152天内有15天无通话记录",
+      "evidence": "根据运营商通话详单数据，连续三天以上无通话记录1次: 2016-04-03 13:05:26 - 2016-0-08 00:07:36, 4天",
+      "score": 2
+    },
+    {
+      "check_point": "contact_each_other",
+      "check_point_cn": "互通过电话的号码数量",
+      "result": "数量众多(100以上，不含100)",
+      "evidence": "互通过电话的号码有102个，比例为98%",
+      "score": 1
+    },
+    {
+      "check_point": "conatct_macao",
+      "check_point_cn": "澳门电话通话情况",
+      "result": "多次通话(三次以上)",
+      "evidence": "澳门地区号码通话10次，共120分钟",
+      "score": 2
+    },
+    {
+      "check_point": "contact_110",
+      "check_point_cn": "110话通话情况",
+      "result": "多次通话(三次以上)",
+      "evidence": "与110号码通话5次，共10分钟",
+      "score": 2
+    },
+    {
+      "check_point": "contact_120",
+      "check_point_cn": "120话通话情况",
+      "result": "多次通话(三次以上)",
+      "evidence": "与120号码通话3次，共10分钟",
+      "score": 2
+    },
+    {
+      "check_point": "contact_lawyer",
+      "check_point_cn": "律师号码通话情况",
+      "result": "多次通话(三次以上)",
+      "evidence": "与律师号码通话15次，共15分钟",
+      "score": 2
+    },
+    {
+      "check_point": "contact_court",
+      "check_point_cn": "法院号码通话情况",
+      "result": "多次通话(三次以上)",
+      "evidence": "与法院号码通话15次，共15分钟",
+      "score": 2
+    },
+    {
+      "check_point": "contact_night",
+      "check_point_cn": "夜间活动情况",
+      "result": "频繁夜间活动(夜间通话比例大于50%，包含50%)",
+      "evidence": "晚间活跃频率占全天的63.89%",
+      "score": 2
+    },
+    {
+      "check_point": "contact_loan",
+      "check_point_cn": "贷款类号码联系情况",
+      "result": "经常联系(联系次数在5次以上，包含5次，且主动呼叫占比大于50%，包含50%)",
+      "evidence": "联系列表:[么么贷]主叫10次共30分钟；被叫12次共13分钟",
+      "score": 2
+    },
+    {
+      "check_point": "contact_bank",
+      "check_point_cn": "银行类号码联系情况",
+      "result": "经常联系(联系次数在5次以上，包含5次，且主动呼叫占比大于50%，包含50%)",
+      "evidence": "联系列表:[招商银行]主叫12次共13分钟；被叫10次共30分钟",
+      "score": 2
+    },
+    {
+      "check_point": "contact_credit_card",
+      "check_point_cn": "信用卡类号码联系情况",
+      "result": "经常联系(联系次数在5次以上，包含5次，且主动呼叫占比大于50%，包含50%)",
+      "evidence": "联系列表:[浦发信用卡中心]主叫10次共30分钟；被叫12次共13分钟",
+      "score": 2
+    },
+    {
+      "check_point": "dwell_used_time",
+      "check_point_cn": "本地居住年限",
+      "result": "本地居住未超过1年",
+      "evidence": "本人本地送货9月",
+      "score": 2
+    },
+    {
+      "check_point": "ebusiness_info",
+      "check_point_cn": "总体电商使用情况",
+      "result": "经常使用(20次以上，包含20)",
+      "evidence": "9个月内购物25次，共1165.43元",
+      "score": 1
+    },
+    {
+      "check_point": "person_ebusiness_info",
+      "check_point_cn": "申请人本人电商使用情况",
+      "result": "经常使用(15次以上，包含15)",
+      "evidence": "9个月内购物17次，共862.1元",
+      "score": 1
+    },
+    {
+      "check_point": "virtual_buying",
+      "check_point_cn": "虚拟商品购买情况",
+      "result": "少量购买(低于20%)",
+      "evidence": "购买虚拟商品10次，共20元，占总消费额3%",
+      "score": 1
+    },
+    {
+      "check_point": "lottery_buying",
+      "check_point_cn": "彩票购买情况",
+      "result": "少量购买(低于20%)",
+      "evidence": "购买彩票2次，共10元，占总消费额1.5%据",
+      "score": 1
+    },
+    {
+      "check_point": "person_addr_changed",
+      "check_point_cn": "申请人本人地址变化情况",
+      "result": "经常变更地址(5次以上，包含5)",
+      "evidence": "使用5个地址，每个地址平均使用5次",
+      "score": 2
+    }
+  ],
+  "cell_behavior": [
+    {
+      "phone_num": "136****1373",
+      "behavior": [
+        {
+          "sms_cnt": 108,
+          "cell_phone_num": "136****1373",
+          "net_flow": 384.412109375,
+          "total_amount": -1,
+          "call_out_time": 85.76666666666667,
+          "cell_mth": "2016-03",
+          "cell_loc": "上海",
+          "call_cnt": 102,
+          "cell_operator_zh": "上海移动",
+          "call_out_cnt": 39,
+          "cell_operator": "chinamobilesh",
+          "call_in_time": 175.85,
+          "call_in_cnt": 63
+        },
+        {
+          "sms_cnt": 130,
+          "cell_phone_num": "136****1373",
+          "net_flow": 106.0927734375,
+          "total_amount": 58.43,
+          "call_out_time": 132.95,
+          "cell_mth": "2016-04",
+          "cell_loc": "上海",
+          "call_cnt": 96,
+          "cell_operator_zh": "上海移动",
+          "call_out_cnt": 38,
+          "cell_operator": "chinamobilesh",
+          "call_in_time": 148.06666666666666,
+          "call_in_cnt": 58
+        }
+      ]
+    }
+  ],
+  "contact_region": [
+    {
+      "region_loc": "上海",
+      "region_uniq_num_cnt": 64,
+      "region_call_out_time": 79.11666666666666,
+      "region_avg_call_in_time": 1.4048661800486617,
+      "region_call_in_time": 192.46666666666667,
+      "region_call_out_cnt": 50,
+      "region_avg_call_out_time": 1.5823333333333331,
+      "region_call_in_cnt_pct": 0.5591836734693878,
+      "region_call_in_time_pct": 0.27248059271843517,
+      "region_call_in_cnt": 137,
+      "region_call_out_time_pct": 0.11302919186627933,
+      "region_call_out_cnt_pct": 0.2777777777777778
+    },
+    {
+      "region_loc": "全国",
+      "region_uniq_num_cnt": 6,
+      "region_call_out_time": 7.3,
+      "region_avg_call_in_time": 0.37666666666666665,
+      "region_call_in_time": 1.8833333333333333,
+      "region_call_out_cnt": 4,
+      "region_avg_call_out_time": 1.825,
+      "region_call_in_cnt_pct": 0.02040816326530612,
+      "region_call_in_time_pct": 0.0026662891390009675,
+      "region_call_in_cnt": 5,
+      "region_call_out_time_pct": 0.010429068050859564,
+      "region_call_out_cnt_pct": 0.022222222222222223
+    },
+    {
+      "region_loc": "美国",
+      "region_uniq_num_cnt": 1,
+      "region_call_out_time": 0,
+      "region_avg_call_in_time": 0.8,
+      "region_call_in_time": 0.8,
+      "region_call_out_cnt": 0,
+      "region_avg_call_out_time": 0,
+      "region_call_in_cnt_pct": 0.004081632653061225,
+      "region_call_in_time_pct": 0.0011325829970977562,
+      "region_call_in_cnt": 1,
+      "region_call_out_time_pct": 0,
+      "region_call_out_cnt_pct": 0
+    },
+    {
+      "region_loc": "运营商",
+      "region_uniq_num_cnt": 3,
+      "region_call_out_time": 8.866666666666667,
+      "region_avg_call_in_time": 1.9166666666666667,
+      "region_call_in_time": 3.8333333333333335,
+      "region_call_out_cnt": 5,
+      "region_avg_call_out_time": 1.7733333333333334,
+      "region_call_in_cnt_pct": 0.00816326530612245,
+      "region_call_in_time_pct": 0.005426960194426748,
+      "region_call_in_cnt": 2,
+      "region_call_out_time_pct": 0.01266726986999381,
+      "region_call_out_cnt_pct": 0.027777777777777776
+    }
+  ],
+  "contact_list": [
+    {
+      "contact_noon": 1,
+      "phone_num_loc": "美国",
+      "contact_3m": 0,
+      "contact_1m": 0,
+      "contact_1w": 0,
+      "p_relation": "",
+      "phone_num": "0010****0325",
+      "contact_name": "未知",
+      "call_in_cnt": 1,
+      "call_out_cnt": 0,
+      "call_out_len": 0,
+      "contact_holiday": 0,
+      "needs_type": "未知",
+      "contact_weekday": 1,
+      "contact_afternoon": 0,
+      "call_len": 0.8,
+      "contact_early_morning": 0,
+      "contact_night": 0,
+      "contact_3m_plus": 1,
+      "call_cnt": 1,
+      "call_in_len": 0.8,
+      "contact_all_day": false,
+      "contact_morning": 0,
+      "contact_weekend": 0
+    },
+    {
+      "contact_noon": 0,
+      "phone_num_loc": "上海",
+      "contact_3m": 0,
+      "contact_1m": 0,
+      "contact_1w": 2,
+      "p_relation": "",
+      "phone_num": "021****5555",
+      "contact_name": "招商银行",
+      "call_in_cnt": 2,
+      "call_out_cnt": 0,
+      "call_out_len": 0,
+      "contact_holiday": 0,
+      "needs_type": "银行",
+      "contact_weekday": 2,
+      "contact_afternoon": 1,
+      "call_len": 13.616666666666667,
+      "contact_early_morning": 0,
+      "contact_night": 1,
+      "contact_3m_plus": 0,
+      "call_cnt": 2,
+      "call_in_len": 13.616666666666667,
+      "contact_all_day": false,
+      "contact_morning": 0,
+      "contact_weekend": 0
+    },
+    {
+      "contact_noon": 0,
+      "phone_num_loc": "运营商",
+      "contact_3m": 5,
+      "contact_1m": 0,
+      "contact_1w": 0,
+      "p_relation": "",
+      "phone_num": "10086",
+      "contact_name": "中国移动客服热线",
+      "call_in_cnt": 2,
+      "call_out_cnt": 3,
+      "call_out_len": 7.45,
+      "contact_holiday": 0,
+      "needs_type": "运营商",
+      "contact_weekday": 2,
+      "contact_afternoon": 4,
+      "call_len": 11.283333333333333,
+      "contact_early_morning": 0,
+      "contact_night": 0,
+      "contact_3m_plus": 0,
+      "call_cnt": 5,
+      "call_in_len": 3.8333333333333335,
+      "contact_all_day": false,
+      "contact_morning": 1,
+      "contact_weekend": 3
+    },
+    {
+      "contact_noon": 0,
+      "phone_num_loc": "全国",
+      "contact_3m": 0,
+      "contact_1m": 0,
+      "contact_1w": 0,
+      "p_relation": "",
+      "phone_num": "40****3015",
+      "contact_name": "广告推销",
+      "call_in_cnt": 1,
+      "call_out_cnt": 0,
+      "call_out_len": 0,
+      "contact_holiday": 0,
+      "needs_type": "未知",
+      "contact_weekday": 1,
+      "contact_afternoon": 0,
+      "call_len": 0.2,
+      "contact_early_morning": 0,
+      "contact_night": 0,
+      "contact_3m_plus": 1,
+      "call_cnt": 1,
+      "call_in_len": 0.2,
+      "contact_all_day": false,
+      "contact_morning": 1,
+      "contact_weekend": 0
+    }
+  ],
+  "main_service": [
+    {
+      "service_details": [
+        {
+          "interact_cnt": 0,
+          "interact_mth": "2015-01"
+        },
+        {
+          "interact_cnt": 0,
+          "interact_mth": "2015-02"
+        },
+        {
+          "interact_cnt": 0,
+          "interact_mth": "2015-03"
+        },
+        {
+          "interact_cnt": 0,
+          "interact_mth": "2015-04"
+        },
+        {
+          "interact_cnt": 1,
+          "interact_mth": "2015-05"
+        },
+        {
+          "interact_cnt": 0,
+          "interact_mth": "2015-06"
+        },
+        {
+          "interact_cnt": 0,
+          "interact_mth": "2015-07"
+        }
+      ],
+      "total_service_cnt": 1,
+      "company_type": "电商",
+      "company_name": "1号店"
+    },
+    {
+      "service_details": [
+        {
+          "interact_cnt": 9,
+          "interact_mth": "2015-01"
+        },
+        {
+          "interact_cnt": 5,
+          "interact_mth": "2015-02"
+        },
+        {
+          "interact_cnt": 10,
+          "interact_mth": "2015-03"
+        },
+        {
+          "interact_cnt": 8,
+          "interact_mth": "2015-04"
+        },
+        {
+          "interact_cnt": 2,
+          "interact_mth": "2015-05"
+        },
+        {
+          "interact_cnt": 3,
+          "interact_mth": "2015-06"
+        },
+        {
+          "interact_cnt": 6,
+          "interact_mth": "2015-07"
+        }
+      ],
+      "total_service_cnt": 43,
+      "company_type": "银行",
+      "company_name": "上海浦东发展银行"
+    }
+  ],
+  "deliver_address": [
+    {
+      "begin_date": "2015-04-11 11:20:21",
+      "total_amount": 1280,
+      "end_date": "2015-04-11 11:20:21",
+      "total_count": 1,
+      "receiver": [
+        {
+          "count": 1,
+          "amount": 1280,
+          "name": "梅西",
+          "phone_num_list": [
+            "156****56149"
+          ]
+        }
+      ],
+      "address": "湖南湘西州吉首市城区湘西自治州人民医院儿科急诊门诊",
+      "lat": 28.26245398067,
+      "lng": 109.69666096173,
+      "predict_addr_type": "工作"
+    },
+    {
+      "begin_date": "2015-01-18 15:11:00",
+      "total_amount": 1265.9,
+      "end_date": "2015-05-20 13:33:17",
+      "total_count": 5,
+      "receiver": [
+        {
+          "count": 5,
+          "amount": 1265.9,
+          "name": "梅西",
+          "phone_num_list": [
+            "136****1373"
+          ]
+        },
+        {
+          "count": 0,
+          "amount": 0,
+          "name": "安东内拉",
+          "phone_num_list": [
+            "156****56149"
+          ]
+        }
+      ],
+      "address": "上海徐汇区襄阳南路228号现代大厦B座三楼",
+      "lat": 31.218114675919,
+      "lng": 121.46375051833,
+      "predict_addr_type": "工作"
+    }
+  ],
+  "ebusiness_expense": [
+    {
+      "all_count": 5,
+      "all_amount": 695,
+      "trans_mth": "2014-11",
+      "category": "服饰、数码周边"
+    },
+    {
+      "all_count": 4,
+      "all_amount": 550,
+      "trans_mth": "2015-01",
+      "category": "图书音响类"
+    }
+  ],
+  "collection_contact": [
+    {
+      "begin_date": "2014-11-15 14:51:25",
+      "total_amount": 3185.1,
+      "end_date": "2015-06-04 23:13:19",
+      "total_count": 24,
+      "contact_details": [
+        {
+          "sms_cnt": 2,
+          "phone_num": "131****15689",
+          "phone_num_loc": "上海",
+          "trans_start": "2015-04-04 00:49:25",
+          "call_in_cnt": 0,
+          "call_cnt": 0,
+          "call_len": 0,
+          "call_out_cnt": 0,
+          "trans_end": "2015-04-04 00:49:26"
+        }
+      ],
+      "contact_name": "马拉多纳"
+    },
+    {
+      "begin_date": "2015-02-06 18:43:56",
+      "total_amount": 0,
+      "end_date": "2015-07-31 07:59:24",
+      "total_count": 0,
+      "contact_details": [
+        {
+          "sms_cnt": 74,
+          "phone_num": "156****9149",
+          "phone_num_loc": "上海",
+          "trans_start": "2015-02-06 18:43:56",
+          "call_in_cnt": 24,
+          "call_cnt": 46,
+          "call_len": 73.85,
+          "call_out_cnt": 22,
+          "trans_end": "2015-07-31 07:59:24"
+        }
+      ],
+      "contact_name": "安东内拉"
+    }
+  ],
+  "trip_info": [
+    {
+      "trip_dest": "湖南",
+      "trip_start_time": "2015-02-17 11:51:57",
+      "trip_end_time": "2015-02-22 21:57:07",
+      "trip_leave": "上海",
+      "trip_type": "节假日"
+    },
+    {
+      "trip_dest": "湖南",
+      "trip_start_time": "2015-04-04 20:22:53",
+      "trip_end_time": "2015-04-06 15:49:38",
+      "trip_leave": "上海",
+      "trip_type": "节假日"
+    }
+  ]
+}

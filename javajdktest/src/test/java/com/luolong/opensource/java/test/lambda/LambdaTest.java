@@ -4,6 +4,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.util.DigestUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
 public class LambdaTest {
 
     public static void main(String[] args) {
-        List<Object> userList = initList(10000);
+        /*List<Object> userList = initList(10000);
         for (int i = 1; i < 11; i++) {
             System.out.println("--------------------第" + i + "次");
             long t1 = System.nanoTime();
@@ -29,7 +30,10 @@ public class LambdaTest {
             long t3 = System.nanoTime();
             System.out.println("lambda---" + (t2 - t1) / 1000 + "μs");
             System.out.println("增强for--" + (t3 - t2) / 1000 + "μs");
-        }
+        }*/
+        String encodeStr=DigestUtils.md5DigestAsHex("86yD6lNvG8sp5fSLmhUFl5wZITwsETmkQqnOmYLn1555670164000".getBytes());
+        System.out.println("MD5加密后的字符串为:encodeStr="+encodeStr);
+
     }
 
     /**
