@@ -5,13 +5,15 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.StopWatch;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-/** 1，linkedlist的优劣势 fori循环特别慢
- *  2，linkedlist随机删除，如果数据量过100万，优势比较铭心啊，主要还是看插入的index的大小，
- *  3，顺序添加，顺序遍历，和arraylist速度差不多
- *  4,相对来讲，arraylist的常数因子比linkedlist的常熟因子要小
+/**
+ * 1，linkedlist的优劣势 fori循环特别慢
+ * 2，linkedlist随机删除，如果数据量过100万，优势比较铭心啊，主要还是看插入的index的大小，
+ * 3，顺序添加，顺序遍历，和arraylist速度差不多
+ * 4,相对来讲，arraylist的常数因子比linkedlist的常熟因子要小
  * <p></p>
  *
  * @author luolong
@@ -23,13 +25,14 @@ public class LinkedListTest {
     /**
      * 链表和arraylist fori遍历性能比较
      * fori循环linkedlist特别吃亏，特别慢
+     *
      * @param []
      * @return void
      * @author long.luo
      * @date 2018/12/24
      */
     @Test
-    public  void linkedListAndArrayListIteratorCompator() {
+    public void linkedListAndArrayListIteratorCompator() {
         LinkedList linkedList = new LinkedList();
         ArrayList arrayList = new ArrayList<>();
         //add 1 万个 element both
@@ -55,16 +58,18 @@ public class LinkedListTest {
         System.out.println("时间:" + (stopWatch1.getTotalTimeMillis() - stopWatch2.getTotalTimeMillis()));
 
     }
+
     /**
      * linkedlist和arraylist foreach循环遍历
      * foreach还好，遍历时间差不多
-     * @author long.luo
-     * @date 2018/12/24
+     *
      * @param []
      * @return void
+     * @author long.luo
+     * @date 2018/12/24
      */
     @Test
-    public  void linkedListAndArrayListIteratorCompator2() {
+    public void linkedListAndArrayListIteratorCompator2() {
         LinkedList linkedList = new LinkedList();
         ArrayList arrayList = new ArrayList<>();
         //add 1 万个 element both
@@ -93,13 +98,14 @@ public class LinkedListTest {
     /**
      * linkedlist和arraylist foreach循环遍历
      * foreach还好，遍历时间差不多
-     * @author long.luo
-     * @date 2018/12/24
+     *
      * @param []
      * @return void
+     * @author long.luo
+     * @date 2018/12/24
      */
     @Test
-    public  void linkedListAndArrayListIteratorCompator3() {
+    public void linkedListAndArrayListIteratorCompator3() {
         LinkedList linkedList = new LinkedList();
         ArrayList arrayList = new ArrayList<>();
         //add 1 万个 element both
@@ -129,13 +135,13 @@ public class LinkedListTest {
      * linkedlist和arraylist 顺序插入
      * 1，顺序插入时间复杂度差不多
      *
-     * @author long.luo
-     * @date 2018/12/24
      * @param []
      * @return void
+     * @author long.luo
+     * @date 2018/12/24
      */
     @Test
-    public  void linkedListAndArrayListAddCompator() {
+    public void linkedListAndArrayListAddCompator() {
         LinkedList linkedList = new LinkedList();
         ArrayList arrayList = new ArrayList<>();
         //add 1 万个 element both
@@ -158,13 +164,14 @@ public class LinkedListTest {
     /**
      * linkedlist和arraylist 随机插入
      * 1，
-     * @author long.luo
-     * @date 2018/12/24
+     *
      * @param []
      * @return void
+     * @author long.luo
+     * @date 2018/12/24
      */
     @Test
-    public  void linkedListAndArrayListRandomAddCompator() {
+    public void linkedListAndArrayListRandomAddCompator() {
         LinkedList linkedList = new LinkedList();
         ArrayList arrayList = new ArrayList<>();
         //add 1 万个 element both
@@ -175,14 +182,14 @@ public class LinkedListTest {
         StopWatch stopWatch1 = new StopWatch();
         stopWatch1.start();
         for (int i = 0; i < 1000000; i++) {
-            linkedList.add(250000,2);
+            linkedList.add(250000, 2);
         }
         stopWatch1.stop();
 
         StopWatch stopWatch2 = new StopWatch();
         stopWatch2.start();
         for (int i = 0; i < 1000000; i++) {
-            arrayList.add(250000,2);
+            arrayList.add(250000, 2);
         }
         stopWatch2.stop();
         System.out.println("随机插入时间对比:" + (stopWatch1.getTotalTimeMillis() - stopWatch2.getTotalTimeMillis()));

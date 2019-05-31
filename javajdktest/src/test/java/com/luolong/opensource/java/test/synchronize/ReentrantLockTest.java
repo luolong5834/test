@@ -25,21 +25,9 @@ public class ReentrantLockTest {
     private static ReentrantLock reentrantLock1 = new ReentrantLock();
 
     /**
-     * 可重入锁公平性非公平性测试
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        for (int i = 0; i < 10; i++) {
-            consumerTest();
-            chiliFactoryTest();
-        }
-
-    }
-
-    /**
      * 可重入锁，就是同一个线程可以多次进入,而且可以拿到进入的次数
      * 进入多少次就必须unlock多少次
+     *
      * @param
      * @return void
      * @author long.luo
@@ -85,7 +73,6 @@ public class ReentrantLockTest {
         Thread thread = new Thread(runnable);
         thread.start();
     }
-
 
     public static void chiliFactoryTest() {
         //创建一个线程
@@ -151,5 +138,18 @@ public class ReentrantLockTest {
                 lock.unlock();
             }
         }
+    }
+
+    /**
+     * 可重入锁公平性非公平性测试
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        for (int i = 0; i < 10; i++) {
+            consumerTest();
+            chiliFactoryTest();
+        }
+
     }
 }

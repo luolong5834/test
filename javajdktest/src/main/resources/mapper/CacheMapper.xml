@@ -4,7 +4,6 @@
 
     <resultMap id="BaseResultMap" type="com.luolong.opensource.java.module">
     </resultMap>
-	
 
 
 </mapper>

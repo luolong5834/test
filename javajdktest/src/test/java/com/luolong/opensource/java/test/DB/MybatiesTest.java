@@ -65,6 +65,6 @@ public class MybatiesTest {
                 break;
             }
         }
-        System.out.println("结果:"+result);
+        System.out.println("结果:" + result);
     }
 }

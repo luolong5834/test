@@ -1,6 +1,5 @@
 package com.luolong.opensource.java.test;
 
-import com.luolong.opensource.java.test.BaseService;
 import org.springframework.stereotype.Service;
 
 /**

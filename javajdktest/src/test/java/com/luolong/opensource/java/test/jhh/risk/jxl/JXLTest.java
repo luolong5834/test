@@ -25,10 +25,11 @@ public class JXLTest {
      * 1,输入表达式
      * 2,根据输入的表达式，解析指定的json格式的报文
      * 3,输出String类型或者数组类型的数据
-     * @author long.luo
-     * @date 2019/4/22
+     *
      * @param [args]
      * @return void
+     * @author long.luo
+     * @date 2019/4/22
      */
     public static void main(String[] args) throws IOException {
         String report = "";
@@ -77,6 +78,6 @@ public class JXLTest {
         if (result == null && jsonArray != null) {
             result = jsonArray.toString();
         }
-        System.out.println("结果:"+result);
+        System.out.println("结果:" + result);
     }
 }

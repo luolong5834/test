@@ -9,12 +9,30 @@ import java.util.concurrent.TimeUnit;
  * <p></p>
  * 1,守护线程是所有用户线程运行完毕Java JVM虚拟机才会退出
  * 2,如果有线程是正在运行，或正在
+ *
  * @author luolong
  * @date 2018/12/21
  */
 @SpringBootTest
 public class GuardThreadTest {
     static ReentrantLockTest.BoundedBuffer boundedBuffer = new ReentrantLockTest.BoundedBuffer();
+
+    public static void createThread() {
+        //创建一个线程
+        Runnable runnable = (() -> {
+            try {
+                while (true) {
+                    System.out.println("沙雕，辣死你...");
+                    boundedBuffer.put("沙雕，辣死你");
+                    TimeUnit.SECONDS.sleep(1);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        Thread thread = new Thread(runnable, "threadTest");
+        thread.start();
+    }
 
     /**
      * 创建一个守护线程
@@ -50,23 +68,6 @@ public class GuardThreadTest {
         Thread thread1 = new Thread(threadGurad);
         thread1.setDaemon(true);
         thread1.start();
-    }
-
-    public static void createThread() {
-        //创建一个线程
-        Runnable runnable = (() -> {
-            try {
-                while (true) {
-                    System.out.println("沙雕，辣死你...");
-                    boundedBuffer.put("沙雕，辣死你");
-                    TimeUnit.SECONDS.sleep(1);
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-        Thread thread = new Thread(runnable, "threadTest");
-        thread.start();
     }
 
     public static void main(String[] args) {

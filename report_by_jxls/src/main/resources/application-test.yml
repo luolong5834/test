@@ -1,0 +1,17 @@
+spring:
+  profiles: test
+  datasource:
+    name: report-center
+    url: jdbc:mysql://192.168.1.95:3306/report-center?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
+    username: JHH-DEV
+    password: abc+123V
+mybatis:
+  mapper-locations: classpath*:mapper/**/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+elasticsearch:
+  cluster-name: elasticsearch
+  cluster-nodes: 10.0.2.200:9300
+export:
+  report:
+    sxd:
+      productId: 68

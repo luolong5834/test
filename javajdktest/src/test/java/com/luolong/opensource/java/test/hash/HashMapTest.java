@@ -10,10 +10,10 @@ import java.util.Map;
 
 /**
  * <p>
- *    1,遍历map.keyset()针对于key
- *    2,遍历map.entryset()针对于要拿key获取value
- *    3,map的默认初始容量为16，负载引资因子为0.75 超过12，会扩大到32（原来的俩倍）
- *    4,hashmap扩容时涉及到数组到新数组的复制，所以建立map要谨慎
+ * 1,遍历map.keyset()针对于key
+ * 2,遍历map.entryset()针对于要拿key获取value
+ * 3,map的默认初始容量为16，负载引资因子为0.75 超过12，会扩大到32（原来的俩倍）
+ * 4,hashmap扩容时涉及到数组到新数组的复制，所以建立map要谨慎
  * </p>
  *
  * @author luolong
@@ -38,7 +38,7 @@ public class HashMapTest {
     }
 
     @Test
-    public void loadfactor(){
+    public void loadfactor() {
 
         //create loadfactor is 0.75 ,initCapatury is 16,
         HashMap map = new HashMap(16, 0.75F);

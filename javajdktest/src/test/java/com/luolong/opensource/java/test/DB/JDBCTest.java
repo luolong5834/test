@@ -18,6 +18,18 @@ import java.sql.SQLException;
  *
  * @author luolong
  * @date 2019/4/8
+ * <p>
+ * 批处理测试
+ * @author long.luo
+ * @date 2019/4/8
+ * @param []
+ * @return void
+ * <p>
+ * 批处理测试
+ * @author long.luo
+ * @date 2019/4/8
+ * @param []
+ * @return void
  *//*
 
 @SpringBootTest
@@ -25,12 +37,12 @@ import java.sql.SQLException;
 public class JDBCTest {
     */
 /**
-     * 批处理测试
-     * @author long.luo
-     * @date 2019/4/8
-     * @param []
-     * @return void
-     *//*
+ * 批处理测试
+ * @author long.luo
+ * @date 2019/4/8
+ * @param []
+ * @return void
+ *//*
 
     @Test
     public void test(){

@@ -19,7 +19,7 @@ public class Test {
     ServiceTest serviceTest;
 
     @org.junit.Test
-    public void test(){
+    public void test() {
         System.out.println("fuck");
     }
 }

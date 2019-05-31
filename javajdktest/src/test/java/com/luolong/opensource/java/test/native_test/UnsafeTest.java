@@ -14,6 +14,7 @@ import java.lang.reflect.Field;
  * 1,Unsafe可以通过反射获取实例
  * 2,Unsafe可以用到并发，因为cpu的cas
  * 3,   Unsafe可以用到序列化
+ *
  * @author luolong
  * @date 2019/1/14
  */
@@ -49,6 +50,7 @@ public class UnsafeTest {
     }
 
 }
+
 class A {
     String name;
 

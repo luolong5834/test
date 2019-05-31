@@ -5,13 +5,9 @@ import mysql.test.pojo.AccountWorkflow;
 import mysql.test.service.AccountWorkflowService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runner.Runner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.swing.*;
 
 /**
  * <p></p>
@@ -29,7 +25,7 @@ public class AccountWorklowTest {
     AccountWorkflowService accountWorkflowService;
 
     @Test
-    public void test(){
+    public void test() {
         final AccountWorkflow result = accountWorkflowService.findWorkFlowByYouxin_id("1");
         System.out.println(result);
     }

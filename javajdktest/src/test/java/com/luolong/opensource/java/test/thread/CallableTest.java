@@ -17,6 +17,7 @@ public class CallableTest {
      * 创建一个callable线程
      * 1，lambda表达式创建
      * 2，lambda可以自己捕捉interruptException
+     *
      * @param []
      * @return java.util.concurrent.Callable<java.lang.Object>
      * @author long.luo
@@ -40,6 +41,7 @@ public class CallableTest {
      * 2，shutdownNow(),关闭正在执行的task,返回等待的task
      * 3, 任何不能响应中断的任务都不能被停止
      * 4,shutdown*（）操作实际调用的是{@code interrupt()}方法,所以判断是否完成应该用{@code isDone（）}来判断
+     *
      * @param []
      * @return void
      * @author long.luo

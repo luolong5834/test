@@ -1,6 +1,5 @@
 package com.luolong.opensource.java.test.HttpUtils;
 
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.ByteArrayOutputStream;
@@ -20,7 +19,7 @@ import java.net.URL;
 @Slf4j
 public class HttpUtil {
 
-    public static String sendPost(String url, String data, String contentType,String encodeing) {
+    public static String sendPost(String url, String data, String contentType, String encodeing) {
 
         OutputStream outputStream = null;
         HttpURLConnection conn = null;
@@ -32,7 +31,7 @@ public class HttpUtil {
             conn.setRequestProperty("accept", "*/*");
 //			conn.setRequestProperty("connection", "Keep-Alive");
             conn.setRequestProperty("connection", "close");
-            conn.setRequestProperty("user-agent","Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+            conn.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
             conn.setRequestProperty("charset", "UTF-8");
             conn.setDoOutput(true);
             conn.setDoInput(true);
@@ -61,30 +60,30 @@ public class HttpUtil {
 
             return new String(readBytes, "UTF-8");
         } catch (MalformedURLException e) {
-            log.error("发送[{}]http post异常",url, e);
+            log.error("发送[{}]http post异常", url, e);
             throw new RuntimeException(e.getMessage());
         } catch (Exception e) {
-            log.error("发送[{}]http post异常",url, e);
+            log.error("发送[{}]http post异常", url, e);
             throw new RuntimeException(e.getMessage());
         } finally {
 
             try {
-                if(outputStream!=null)
+                if (outputStream != null)
                     outputStream.close();
             } catch (IOException e) {
                 log.error("outputStream关闭异常", e);
             }
             try {
-                if(bos!=null)
+                if (bos != null)
                     bos.close();
-            }catch (IOException e) {
+            } catch (IOException e) {
                 log.error("bos关闭异常", e);
             }
             try {
-                if(inputStream!=null){
+                if (inputStream != null) {
                     inputStream.close();
                 }
-            }catch (IOException e){
+            } catch (IOException e) {
                 log.error("inputStream关闭异常", e);
             }
             if (conn != null) {

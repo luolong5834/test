@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="layout :: header"></th:block>
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<!-- Page Content -->
+<div id="page-content-wrapper">
+    <div class="col-sm-offset-2 main">
+        <h5 class="page-header">新颜黑名单报文查看</h5>
+    </div>
+    <div class="col-sm-offset-2 main">
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="name">姓名<font color="red">*</font></label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="姓名">
+            </div>
+            <div class="form-group">
+                <label for="idcard">身份证<font color="red">*</font></label>
+                <input type="text" class="form-control" id="idcard" name="idcard" placeholder="身份证">
+            </div>
+            <div class="form-group">
+                <label for="phone">手机号</label>
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="手机号">
+            </div>
+            <button type="button" id="queryBtn" class="btn btn-primary btn-sm">查看报文</button>
+            <button type="reset" class="btn btn-info btn-sm">重 置</button>
+        </form>
+    </div>
+
+    <div class="col-sm-offset-2 main">
+        <pre><h3>查询结果:<span id="result">请输入条件并查询</span></h3></pre>
+    </div>
+
+    <div class="col-sm-offset-2 main">
+        <label>原始报文：<font color="red">(注:“code”值为0,1,2,9分别对应为风险探针（逾期未还），无法确认，空值未知，其他异常</font></label>
+        <pre style="width:100%;height:100%" id="reportData"></pre>
+    </div>
+</div>
+
+<th:block th:replace="layout :: footer"></th:block>
+<script th:src="@{/js/report/xinyan/xinyan_blacklist_report.js?date=20190221v1}"></script>
+</body>
+</html>

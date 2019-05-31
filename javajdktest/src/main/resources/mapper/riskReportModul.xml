@@ -4,6 +4,6 @@
 
     <resultMap id="BaseResultMap" type="com.luolong.opensource.java.modul.riskReportModul">
     </resultMap>
-	
+
 
 </mapper>

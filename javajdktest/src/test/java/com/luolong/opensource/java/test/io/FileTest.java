@@ -8,7 +8,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.*;
 
@@ -16,34 +15,37 @@ import java.util.concurrent.*;
  * <p>1,</p>
  * 1,File类只能读取同一个操作系统的文件.
  * 2,可以通过UrlConnection读取远程的文件
+ *
  * @author luolong
  * @date 2018/12/27
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class FileTest {
-      private final static ExecutorService threadPool = Executors.newFixedThreadPool(10);
-     @Test
-     public void readRemoteFileTest(){
-         String remoteFilePath = "";
+    private final static ExecutorService threadPool = Executors.newFixedThreadPool(10);
+
+    @Test
+    public void readRemoteFileTest() {
+        String remoteFilePath = "";
     }
 
     /**
      * File file = new File(uri) 只能读取本地文件
-     * @author long.luo
-     * @date 2018/12/27
+     *
      * @param []
      * @return void
+     * @author long.luo
+     * @date 2018/12/27
      */
     @Test
-    public void readLocalFileTest() throws URISyntaxException, FileNotFoundException ,IOException{
+    public void readLocalFileTest() throws URISyntaxException, FileNotFoundException, IOException {
         //URI uri = new URI("file", "172.16.11.100", "/E:/1111.txt", "");
         String filePath = "/1111.txt";
         File file = new File(filePath);
         if (file.exists()) {
 
             System.out.println("万事俱备，只欠东风");
-        }else{
+        } else {
             System.out.println("本地文件不存在");
         }
         String fileResult = this.readFromFile(filePath);
@@ -51,13 +53,13 @@ public class FileTest {
     }
 
     @Test
-    public void renameFileTest() throws URISyntaxException, FileNotFoundException ,IOException{
+    public void renameFileTest() throws URISyntaxException, FileNotFoundException, IOException {
         //URI uri = new URI("file", "172.16.11.100", "/E:/1111.txt", "");
         String filePath = "/1111.txt";
         File file = new File(filePath);
         if (file.exists()) {
             System.out.println("万事俱备，只欠东风");
-        }else{
+        } else {
             System.out.println("本地文件不存在");
         }
         file.renameTo(new File("/1111.txt"));
@@ -70,7 +72,7 @@ public class FileTest {
         File file = new File(filePath);
         if (file.exists()) {
             System.out.println("万事俱备，只欠东风");
-        }else{
+        } else {
             System.out.println("本地文件不存在");
         }
 
@@ -78,7 +80,7 @@ public class FileTest {
         ArrayList<Callable<Object>> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             Callable runnable = (() -> {
-                try (FileWriter fw = new FileWriter(file,false);){
+                try (FileWriter fw = new FileWriter(file, false);) {
                     fw.write(Thread.currentThread().getName());
                     fw.write(Thread.currentThread().getName());
                     fw.write(Thread.currentThread().getName());
@@ -95,7 +97,6 @@ public class FileTest {
 
         });
         TimeUnit.SECONDS.sleep(10);
-
 
 
     }

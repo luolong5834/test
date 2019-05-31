@@ -1,6 +1,5 @@
 package com.luolong.opensource.java.test.httpClient;
 
-import com.sun.deploy.net.HttpResponse;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.config.RequestConfig;
@@ -29,14 +28,14 @@ import java.util.Map;
 public class HttpClientTest {
 
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         Map<String, String> resultMap = new HashMap<String, String>();
         CloseableHttpClient httpClient = HttpClients.createDefault();
         String result = "";
         String md52 = "1111";
         File file = new File("C:\\Users\\luolong\\Desktop\\员工绩效考核书-罗龙-04.docx");
         FileInputStream fileInputStream = new FileInputStream(file);
-        System.out.println("Md5后"+md52 );
+        System.out.println("Md5后" + md52);
         try {
             HttpPost httpPost = new HttpPost("https://openapi.qiyuesuo.me/remote/contract/createbyfile");
             long time = new Date().getTime();
@@ -57,7 +56,7 @@ public class HttpClientTest {
 
             httpPost.setHeader("x-qys-open-signature", md52);
             httpPost.setHeader("x-qys-open-accesstoken", "mkQqnOmYLn");
-            httpPost.setHeader("x-qys-open-timestamp","0");
+            httpPost.setHeader("x-qys-open-timestamp", "0");
             builder.setCharset(java.nio.charset.Charset.forName("UTF-8"));
             builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
             String fileName = null;
@@ -65,7 +64,7 @@ public class HttpClientTest {
 	        for (int i = 0; i < multipartFiles.size(); i++) {
             multipartFile = multipartFiles.get(i);*/
             fileName = "file";
-            builder.addBinaryBody("file",fileInputStream, ContentType.MULTIPART_FORM_DATA, "1111");
+            builder.addBinaryBody("file", fileInputStream, ContentType.MULTIPART_FORM_DATA, "1111");
             //决中文乱码
             ContentType contentType = ContentType.create(HTTP.PLAIN_TEXT_TYPE, HTTP.UTF_8);
            /* for (Map.Entry<String, Object> entry : params.entrySet()) {
@@ -78,7 +77,7 @@ public class HttpClientTest {
             builder.addTextBody("111", "2222", contentType);
             ContentType.APPLICATION_FORM_URLENCODED
             HttpEntity entity = builder.build();
-            System.out.println("entity ----------"+entity.toString());
+            System.out.println("entity ----------" + entity.toString());
             httpPost.setEntity(entity);
             CloseableHttpResponse response = httpClient.execute(httpPost);// 执行提交
 
@@ -89,8 +88,8 @@ public class HttpClientTest {
             httpPost.setConfig(requestConfig);
 
             HttpEntity responseEntity = response.getEntity();
-            System.out.println(response.getStatusLine().getStatusCode()+"-------------");
-            System.out.println(responseEntity+"+++++++++");
+            System.out.println(response.getStatusLine().getStatusCode() + "-------------");
+            System.out.println(responseEntity + "+++++++++");
             resultMap.put("scode", String.valueOf(response.getStatusLine().getStatusCode()));
             resultMap.put("data", "");
             if (responseEntity != null) {
@@ -117,16 +116,6 @@ public class HttpClientTest {
     }
 
 
-
-
-
-
-
-
-
-
-
-
     /**
      *这是外面传的参数
      */
@@ -141,16 +130,6 @@ public class HttpClientTest {
     String str= appToken+appSecret+0;
 			    System.out.println(str);
     Map<String, String> resultDataMap = HttpUtil.httpPostRequest2(url,pdfFile, "合同", data, -1,str);*/
-
-
-
-
-
-
-
-
-
-
 
 
 }

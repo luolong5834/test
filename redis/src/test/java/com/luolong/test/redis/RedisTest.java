@@ -3,11 +3,9 @@ package com.luolong.test.redis;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.util.StringUtils;
 
 import java.util.UUID;
 
@@ -24,10 +22,10 @@ public class RedisTest {
     StringRedisTemplate redisTemplate;
 
     @Test
-    public void addTest(){
+    public void addTest() {
         String uuid;
         for (int i = 0; i < 10; i++) {
-            redisTemplate.opsForValue().set("global:uuid"+i, UUID.randomUUID().toString());
+            redisTemplate.opsForValue().set("global:uuid" + i, UUID.randomUUID().toString());
         }
 
     }

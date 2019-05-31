@@ -38,7 +38,7 @@ public class AccountWorkflowServiceImpl implements AccountWorkflowService {
             }
         }
         for (AccountWorkflow accountWorkflow : first.getNext()) {
-              recusion(data,accountWorkflow);
+            recusion(data, accountWorkflow);
         }
         return first;
     }

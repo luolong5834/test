@@ -9,5 +9,5 @@ import org.springframework.stereotype.Service;
  * @date 2019/1/29
  */
 @Service("service")
-public class ZidingyiService extends BaseService2{
+public class ZidingyiService extends BaseService2 {
 }

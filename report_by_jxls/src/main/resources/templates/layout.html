@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="header">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv=”X-UA-Compatible” content=”IE=edge,chrome=1″/>
+        <!-- Meta -->
+        <meta name="description" content="报表中心">
+        <meta name="author" content="金互行">
+        <title>报表中心</title>
+        <!-- bootstrap-3.3.7 -->
+        <link th:href="@{/lib/bootstrap-3.3.7/bootstrap.min.css}" rel="stylesheet">
+        <link th:href="@{/lib/bootstrap-3.3.7/simple-sidebar.css}" rel="stylesheet">
+        <link th:href="@{/lib/jquery_dateTimepicker2.3.7/jquery.datetimepicker.css}" rel="stylesheet">
+    </head>
+    <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">报表中心</a>
+            </div>
+            <!--<div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">退出</a></li>
+                </ul>
+            </div>-->
+        </div>
+    </nav>
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li>
+                    <a th:href="@{/report/sxd}">随心贷风控报表</a>
+                </li>
+                <li>
+                    <a th:href="@{/report/xinyan/blacklist}">新颜黑名单报表查看</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+    </div>
+    </body>
+</th:block>
+<th:block th:fragment="footer">
+    <script th:src="@{/lib/jquery/jquery.js}"></script>
+    <script th:src="@{/lib/bootstrap-3.3.7/bootstrap.min.js}"></script>
+    <script th:src="@{/lib/jquery_dateTimepicker2.3.7/jquery.datetimepicker.js}"></script>
+    <script>
+        $(function(){
+            $('.container-fluid .nav-sidebar li').bind('click',function(){
+               $(this).addClass('active').siblings('li').removeClass('active');
+            })
+        })
+
+    </script>
+</th:block>
+</html>
