@@ -4,11 +4,11 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/droolstest" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/droolstest/target/classes/META-INF/maven/com.drools.modules.test/drools-moudles" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/httpclient" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/javajdktest" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/junittest" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mysql" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/redis" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/redis/mysql" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/report_by_jxls" charset="UTF-8" />
   </component>
 </project>
