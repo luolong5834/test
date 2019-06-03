@@ -1,0 +1,18 @@
+package com.luolong.drools
+import com.luolong.drools.modul.Person
+    rule "test001"
+      when
+         $p:Person(name=="张三",age==30);
+      then
+         $p.setName("李四");
+         update($p);
+         System.out.println("改完后的名字"+$p.getName());
+    end
+
+    rule test002
+     when
+     $p:Person(name=="李四");
+     then
+     $p.setAge(40);
+     System.out.println("改完后的名字"+$p.getName()+"改完后的年龄"+$p.getAge());
+    end
