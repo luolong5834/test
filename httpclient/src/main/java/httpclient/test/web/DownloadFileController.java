@@ -21,9 +21,9 @@ public class DownloadFileController {
 
     @GetMapping("downloadPdf")
     public void downloadFile(String filePath, HttpServletResponse response) throws IOException {
-        response.setCharacterEncoding("gbk");
+        response.setCharacterEncoding("utf-8");
         response.setContentType("application/pdf");
-        response.setHeader("Transfer-Encoding:","b");
+        //response.setHeader("Transfer-Encoding:","b");
         //设置下载头
         //response.setHeader("Content-Disposition", "attachment;filename=" + "sample.pdf");
         try (ServletOutputStream outputStream = response.getOutputStream(); FileInputStream in = new FileInputStream(filePath);) {

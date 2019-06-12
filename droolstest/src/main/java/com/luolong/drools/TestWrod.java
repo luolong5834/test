@@ -27,7 +27,7 @@ public class TestWrod {
         KieServices kss = KieServices.Factory.get();
         KieContainer kc = kss.getKieClasspathContainer();
         KieSession ks = kc.newKieSession("ksession_luolong");
-        Person person = new Person("张三", 30);
+        Person person = new Person("Li", 30);
         FactHandle insert = ks.insert(person);
         int count = ks.fireAllRules();
         System.out.println("总执行了" + count + "条规则");

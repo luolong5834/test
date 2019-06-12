@@ -2,7 +2,7 @@ package com.luolong.drools
 import com.luolong.drools.modul.Person
     rule "test001"
       when
-         $p:Person(name=="张三",age==30);
+         $p:Person(name==name,age==age);
       then
          $p.setName("李四");
          update($p);
