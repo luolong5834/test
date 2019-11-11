@@ -9,8 +9,7 @@ import lombok.Data;
  * @date 2019/4/8
  */
 @Data
-public class Coupon {
-    int id;
+public class Coupon { int id;
     String couponNo;
     String remark;
 }
