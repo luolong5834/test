@@ -12,5 +12,5 @@ import lombok.Data;
 public class Coupon {
     int id;
     String couponNo;
-    String remark;
+    String remark1;
 }
