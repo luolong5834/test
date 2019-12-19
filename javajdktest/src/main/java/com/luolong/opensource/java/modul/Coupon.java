@@ -16,5 +16,6 @@ public class Coupon {
     String testAdd;
     String testUndo;
     String test1;
+    String test2;
 
 }
