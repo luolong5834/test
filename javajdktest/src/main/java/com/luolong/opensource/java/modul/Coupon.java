@@ -14,4 +14,5 @@ public class Coupon {
     String couponNo;
     String remark1;
     String testAdd;
+    String testUndo;
 }
