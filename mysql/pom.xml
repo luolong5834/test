@@ -48,8 +48,7 @@
         </dependency>
     </dependencies>
 
-    <!--resources-plugin -->
-    <!-- <build>
+     <build>
          <plugins>
              <plugin>
                  <groupId>org.mybatis.generator</groupId>
@@ -83,6 +82,6 @@
                  </dependencies>
              </plugin>
          </plugins>
-     </build>-->
+     </build>
 
 </project>

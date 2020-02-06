@@ -121,14 +121,14 @@ public class MapperPlugin extends PluginAdapter {
             interfaceType.addTypeArgument(new FullyQualifiedJavaType("M, E, ID extends Serializable"));
 
             // 添加方法并加注释
-            Method method = countByExample(introspectedTable);
-            interface1.addMethod(method);
+           Method method = countByExample(introspectedTable);
+            /*interface1.addMethod(method); luolong*/
 
-            method = deleteByExample(introspectedTable);
-            interface1.addMethod(method);
+             /*method = deleteByExample(introspectedTable);
+            interface1.addMethod(method);*/
 
-            method = deleteByPrimaryKey(introspectedTable);
-            interface1.addMethod(method);
+            /*method = deleteByPrimaryKey(introspectedTable);
+            interface1.addMethod(method);*/
 
             method = insert(introspectedTable);
             interface1.addMethod(method);
@@ -139,14 +139,14 @@ public class MapperPlugin extends PluginAdapter {
             method = insertBatch(introspectedTable);
             interface1.addMethod(method);
 
-            method = insertBatchSelective(introspectedTable);
-            interface1.addMethod(method);
+            /*method = insertBatchSelective(introspectedTable);
+            interface1.addMethod(method);*/
 
-            method = selectByExampleWithBLOBs(introspectedTable);
-            interface1.addMethod(method);
+            /*method = selectByExampleWithBLOBs(introspectedTable);
+            interface1.addMethod(method);*/
 
-            method = selectByExample(introspectedTable);
-            interface1.addMethod(method);
+            /*method = selectByExample(introspectedTable);
+            interface1.addMethod(method);*/
 
             method = selectByPrimaryKey(introspectedTable);
             interface1.addMethod(method);
@@ -154,23 +154,23 @@ public class MapperPlugin extends PluginAdapter {
             method = updateByPrimaryKeySelective(introspectedTable);
             interface1.addMethod(method);
 
-            method = updateByPrimaryKeyWithBLOBs(introspectedTable);
+            /*method = updateByPrimaryKeyWithBLOBs(introspectedTable);
             interface1.addMethod(method);
-
+*/
             method = updateByPrimaryKey(introspectedTable);
             interface1.addMethod(method);
 
-            method = updateByExample(introspectedTable);
-            interface1.addMethod(method);
+            /*method = updateByExample(introspectedTable);
+            interface1.addMethod(method);*/
 
             method = updateByExampleSelective(introspectedTable);
             interface1.addMethod(method);
 
-            method = updateByExampleWithBLOBs(introspectedTable);
-            interface1.addMethod(method);
+            /*method = updateByExampleWithBLOBs(introspectedTable);
+            interface1.addMethod(method);*/
 
-            method = updateBatchByPrimaryKey(introspectedTable);
-            interface1.addMethod(method);
+            /*method = updateBatchByPrimaryKey(introspectedTable);
+            interface1.addMethod(method);*/
 
             method = updateBatchByPrimaryKeySelective(introspectedTable);
             interface1.addMethod(method);
@@ -178,8 +178,8 @@ public class MapperPlugin extends PluginAdapter {
             method = updateBatchByExampleSelective(introspectedTable);
             interface1.addMethod(method);
 
-            method = updateBatchByExample(introspectedTable);
-            interface1.addMethod(method);
+            /*method = updateBatchByExample(introspectedTable);
+            interface1.addMethod(method);*/
 
             addExampleClassComment(interface1);
 

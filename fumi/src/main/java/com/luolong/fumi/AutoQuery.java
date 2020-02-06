@@ -8,34 +8,38 @@ import com.dingtalk.api.DingTalkClient;
 import com.dingtalk.api.request.OapiRobotSendRequest;
 import com.dingtalk.api.response.OapiRobotSendResponse;
 import com.taobao.api.ApiException;
+import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.StopWatch;
 
-import java.io.*;
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
-import java.time.ZoneId;
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * TODO
  *
  * @author longluo
  */
-public class AutoReport {
+
+public class AutoQuery {
 
     final static String myRobotUrl = "https://oapi.dingtalk.com/robot/send?access_token=60c1d673bcf5dff2fbac1c1235d9d48b3ba4b845c5b6c1233e6ff46f1bf75626";
     final static String otherRobotUrl = "https://oapi.dingtalk.com/robot/send?access_token=44ddb223dd7b51cab86f7474c4522b70db60226cb158d20f6e16fc28b3295617";
     final String crfToken = "lXlqFzeuuRDHZ5nAeUePnMsvYGJowqMR7x0qgiagLyWxX3tZZuzqDaXGf8bfbBcy";
     final String cookieToken = "csrftoken=" + crfToken + ";" + "eid01=CmQCIl4NncoDdEr/A7j/Ag==";
     String sessionId = null;
-    String queryUsersSql = "SELECT count(1) as 开户,date_format(option_open_time,'%Y-%m-%d') as option_open_time from wlt_securities_account where   option_open_time > '2019-12-01' group by date_format(option_open_time,'%Y-%m-%d') with rollup limit 100;";
-    String queryTradeUserSql = "SELECT count(DISTINCT securities_account_id) 交易用户数,date_format(create_time,'%Y-%m-%d') 日期\n" +
-            "FROM wlt_stock_order o\n" +
-            "WHERE o.ticker_type = 7\n" +
-            "  AND create_time > '2019-12-01 00:00:00'\n" +
-            "GROUP BY date_format(create_time,'%Y-%m-%d')  with rollup limit 100;";
+    String queryUsersSql = "SELECT count( c.fin_account_id)\n" +
+            "      FROM t_order c\n" +
+            "      where c.create_time > '2020-01-06 05:00' and c.create_time  < '2020-01-07 05:00'";
+    String queryTradeUserSql = "select * from t_fin_account_position t WHERE option_type = 'OPTION' and  option_can_exercise = 0 and option_expire_date = '2020-01-13' order by id limit 100";
     String queryTradeOrders = "SELECT count(1) as 下单数, sum(quantity) 合约数, if(status = 'FILLED','成交数','未成交') 状态,date_format(create_time,'%Y-%m-%d') 日期\n" +
             "FROM wlt_stock_order o\n" +
             "WHERE o.ticker_type = 7\n" +
@@ -46,8 +50,12 @@ public class AutoReport {
 
     public String test() throws Exception {
         login();
+        final StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        System.out.println("开始查询");
         final String query = query(queryUsersSql);
-        System.out.println("已经查出1");
+        stopWatch.stop();
+        System.out.println(stopWatch);
         final JSONArray data = JSONObject.parseObject(query).getJSONObject("data").getJSONArray("rows");
         StringBuffer result = new StringBuffer();
         String newLine = "\n";
@@ -153,12 +161,12 @@ public class AutoReport {
         try {
             String url = "http://10.100.2.34:9123/query/";
             HashMap<Object, Object> params = new HashMap<>();
-            params.put("instance_name", "US-Fulldb");
-            params.put("db_name", "wl_trade");
+            params.put("instance_name", "US-Core-Read");
+            params.put("db_name", "wl_core");
             params.put("sql_content", countSql);
             params.put("schema_name", null);
-            params.put("tb_name", null);
-            params.put("limit_num", "");
+            params.put("tb_nalimit_numme", null);
+            params.put("", "");
 
             result = post(url, params);
             count = 0;
@@ -277,50 +285,27 @@ public class AutoReport {
     }
 
     public static void main(String[] args) throws Exception {
-        final Timer timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                final AutoReport execute = new AutoReport();
-                try {
-                    final String result = execute.test();//
-                    execute.sendDingTalk(otherRobotUrl, "期权统计信息请查看", "text", "13775192177");
-                    execute.sendDingTalk(otherRobotUrl, result, "markdown", "13775192177");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        TimerTask mytask = new TimerTask() {
-            @Override
-            public void run() {
-                final AutoReport execute = new AutoReport();
-                final String result;
-                try {
-                    result = execute.test();
-                    execute.sendDingTalk(myRobotUrl, "期权统计信息请查看", "text", "15618641071");
-                    execute.sendDingTalk(myRobotUrl, result, "markdown", "15618641071");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        final Calendar myInstance = Calendar.getInstance(TimeZone.getDefault());
-        myInstance.set(2020, 0, 8, 10, 16);
-        //timer.schedule(mytask, new Date(), 1000 * 60 * 60 * 24);
+        //new AutoQuery().test();
+        List<Me> list = new ArrayList();
+        final StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        for (int i = 0; i < 400000; i++) {
+            final Me me = new Me();
+            me.setAge((int) Math.random());
+            me.setName("1");
+        }
+        ;
+        Set<Me> set = new HashSet(list);
+        set.stream().collect(Collectors.toMap(Me::getAge, Function.identity()));
+        stopWatch.stop();
+        System.out.println(stopWatch.toString());
 
-        //7
-        final Calendar instance = Calendar.getInstance(TimeZone.getDefault());
-        instance.set(2020, 0, 9, 15, 42);
-        timer.schedule(timerTask, instance.getTime(), 1000 * 60 * 60 * 24);
+    }
 
-
-        /*final Calendar instance = Calendar.getInstance(TimeZone.getDefault());
-        instance.set(2020, 0, 7, 15, 30);
-
-        timer.schedule(timerTask, instance.getTime(), 1000 * 60 * 60 * 24);*/
-        //execute.sendDingTalk();
-
+    @Data
+    static class Me {
+        String name;
+        int age;
     }
 
 }

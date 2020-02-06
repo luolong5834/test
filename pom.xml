@@ -14,7 +14,8 @@
         <module>mysql</module>
         <module>jxl</module>
         <module>redis</module>
-        <module>javajdktest</module>
+        <module>jdk</module>
+        <module>fumi</module>
     </modules>
 
     <parent>

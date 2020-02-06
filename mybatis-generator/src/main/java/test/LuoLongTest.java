@@ -6,13 +6,13 @@ import org.mybatis.generator.api.ShellRunner;
  * @author orange1438
  *         2016/10/07 16:58
  */
-public class Orange1438Test {
+public class LuoLongTest {
 
 
     public static void main(String[] args) throws Exception {
 
         // 调试初始化参数
-        Orange1438Test test = new Orange1438Test();
+        LuoLongTest test = new LuoLongTest();
         //取得根目录路径
         String rootPath = test.getClass().getResource("/").getFile().toString();
         //当前目录路径

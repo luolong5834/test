@@ -46,7 +46,7 @@ http://mbg.cndocs.tk/
         </plugin>
 
         <!-- service层插件 -->
-        <plugin type="org.mybatis.generator.plugins.MybatisServicePlugin">
+       <!-- <plugin type="org.mybatis.generator.plugins.MybatisServicePlugin">
             <property name="targetPackage" value="${service.package}"/>
             <property name="implementationPackage" value="${service.package.impl}"/>
             <property name="targetProject" value="${service.path}"/>
@@ -58,7 +58,7 @@ http://mbg.cndocs.tk/
             <property name="enableDeleteByExample" value="true"/>
             <property name="enableUpdateByPrimaryKeySelective" value="true"/>
             <property name="enableUpdateByExample" value="true"/>
-        </plugin>
+        </plugin>-->
 
         <!-- 注释 -->
         <commentGenerator>

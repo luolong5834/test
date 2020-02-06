@@ -29,7 +29,7 @@ http://mbg.cndocs.tk/
         <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
         <!-- 格式化XML代码 -->
         <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
-
+        <property name="insertStatementEnabled" value="false"/>
         <!--开启抑制类型的警告信息-->
         <property name="suppressTypeWarnings" value="true"/>
 
@@ -40,32 +40,40 @@ http://mbg.cndocs.tk/
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <!--插件 ：生成的Java模型创建一个toString方法-->
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
-        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+        <!--<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
             <property name="searchString" value="Example$"/>
             <property name="replaceString" value="Criteria"/>
-        </plugin>
+        </plugin>-->
 
         <!-- 统一Mapper 接口 -->
-        <plugin type="org.mybatis.generator.plugins.MapperPlugin">
+        <!--<plugin type="org.mybatis.generator.plugins.MapperPlugin">
             <property name="interfaceName" value="IMapper"/>
-            <!-- 是否删除Mapper类里的方法，默认删除-->
+            &lt;!&ndash; 是否删除Mapper类里的方法，默认删除&ndash;&gt;
             <property name="deleteMethod" value="true"/>
-        </plugin>
+        </plugin>-->
 
         <!-- service层插件 -->
-        <plugin type="org.mybatis.generator.plugins.MybatisServicePlugin">
+        <!--<plugin type="org.mybatis.generator.plugins.MybatisServicePlugin">
             <property name="targetPackage" value="${service.package}"/>
             <property name="implementationPackage" value="${service.package.impl}"/>
             <property name="targetProject" value="${service.path}"/>
             <property name="enableInsert" value="true"/>
+&lt;!&ndash;
             <property name="enableUpdateByExampleSelective" value="true"/>
+&ndash;&gt;
             <property name="enableInsertSelective" value="true"/>
             <property name="enableUpdateByPrimaryKey" value="true"/>
+&lt;!&ndash;
             <property name="enableDeleteByPrimaryKey" value="true"/>
+&ndash;&gt;
+&lt;!&ndash;
             <property name="enableDeleteByExample" value="true"/>
+&ndash;&gt;
             <property name="enableUpdateByPrimaryKeySelective" value="true"/>
+&lt;!&ndash;
             <property name="enableUpdateByExample" value="true"/>
-        </plugin>
+&ndash;&gt;
+        </plugin>-->
 
         <!-- 注释 -->
         <commentGenerator>
@@ -79,7 +87,7 @@ http://mbg.cndocs.tk/
 
             <!-- 自己添加的参数属性:数据表字段的get、set方法是否添加final关键字,默认为true -->
             <property name="addMethodFinal" value="true"/>
-            <property name="author" value="orange1438"/>
+            <property name="author" value="luolong"/>
         </commentGenerator>
 
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
@@ -141,7 +149,8 @@ http://mbg.cndocs.tk/
         <!-- 指定生成的数据库表 -->
         <!-- domainObjectName：指定生成的实体类的文件名 -->
         <!--<table tableName="sys_user" domainObjectName="User"/>-->
-        <table tableName="t_option_exercise_record" domainObjectName="optionExerciseRecord"/>
+        <table tableName="t_option_exercise_record" domainObjectName="OptionExerciseRecord"/>
+        <table tableName="t_option_exercise_result" domainObjectName="OptionExerciseResult"/>
 
         <!-- 其他需求：有些表的字段需要指定java类型 -->
         <!--<table schema="management_system" tableName="s_user"-->

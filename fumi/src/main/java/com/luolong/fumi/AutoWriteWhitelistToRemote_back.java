@@ -27,7 +27,7 @@ import java.util.List;
  *
  * @author longluo
  */
-public class AutoWriteWhitelistToRemote {
+public class AutoWriteWhitelistToRemote_back {
 
 
     final String crfToken = "lXlqFzeuuRDHZ5nAeUePnMsvYGJowqMR7x0qgiagLyWxX3tZZuzqDaXGf8bfbBcy";
@@ -79,7 +79,7 @@ public class AutoWriteWhitelistToRemote {
             }
 
             long needWhite = Arrays.stream(whites).filter(userId -> !exists.contains(userId)).distinct().count();//真实要添加de白名单
-            int existLen = org.apache.commons.lang3.StringUtils.isEmpty(exists) ? 0 : exists.split(",").length;
+            int existLen = StringUtils.isEmpty(exists) ? 0 : exists.split(",").length;
             sqlTotal = needWhite;
             boolean execute = whites.length == existLen + repeats.size() + needWhite;
             System.out.println(String.format("总数：%s, 已存在：%s, 重复：%s, 最终成功添加白名单：%s, 计算结果：%s", whites.length, existLen, repeats.size(), needWhite, execute));
@@ -121,7 +121,6 @@ public class AutoWriteWhitelistToRemote {
     }
 
     public String post(String urlparam, HashMap map) throws Exception {
-        System.out.println(map);
         //构建连接对象
         URL url = new URL(urlparam);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -156,7 +155,6 @@ public class AutoWriteWhitelistToRemote {
                 }
             });
             sb.substring(0, sb.length() - 1);
-            System.out.println(sb);
             out.writeBytes(sb.toString());
         }
 
@@ -180,44 +178,49 @@ public class AutoWriteWhitelistToRemote {
     }
 
     private String getExistsIds(String ids) throws Exception {
-        final String[] idsss = ids.split(",");
-        int page = 1000;
-        int time = (idsss.length + page - 1) / page;
-        int cnt = 1;
         final StringBuffer existId = new StringBuffer();
-        int j = 0;
-        Integer[] userIds = {0};
-        while (cnt <= time) {
-            int begin = (cnt -1) * page ;
-            int end = cnt * page > idsss.length ? idsss.length : cnt * page;
-            String[] temp = new String[end - begin];
-            System.arraycopy(idsss, begin, temp, 0, end - begin);
-            final String join = StringUtils.join(temp, ",");
-            String exitsCountSql = "select count(*) from wlt_whitelist a where a.user_id in (ids)  and type = 'OPTION_OPEN'";
-            String exitsPageSql = "select * from wlt_whitelist a where a.user_id in (ids)  and type = 'OPTION_OPEN' and user_id > userId order by user_id limit 100";
-            exitsCountSql = exitsCountSql.replace("ids", join);
-            exitsPageSql = exitsPageSql.replace("ids", join);
-            String countResult = query(exitsCountSql);
-            JSONObject result = JSONObject.parseObject(countResult);
-            Integer total = result.getJSONObject("data").getJSONArray("rows").getJSONArray(0).getInteger(0);
-            int totalTimes = (total + pageSize - 1) / pageSize;
-            int cntTime = 0;
-            while (cntTime < totalTimes) {
-                exitsPageSql = exitsPageSql.replace("userId", "0");
-                cntTime++;
-                String query = query(exitsPageSql);
-                JSONArray results = JSONObject.parseObject(query).getJSONObject("data").getJSONArray("rows");
-                if (results == null || results.size() == 0) {
-                    break;
-                }
-                results.stream().forEach(o -> {
-                    JSONArray e = (JSONArray) o;
-                    userIds[0] = e.getInteger(1);
-                    existId.append(userIds[0]).append(",");
-                });
+        Integer[] userIds = new Integer[1];
+        userIds[0] = 0;
+        final String[] array = ids.split(",");
+        int total = (array.length + 100 - 1) / 100;
+        //String exitsCountSql = "select count(*) from wlt_whitelist a where a.user_id  in (ids)  and type = 'OPTION_OPEN'";
+/*
+        String exitsPageSql = "select * from wlt_whitelist a where a.user_id  in (ids)  and type = 'OPTION_OPEN' and user_id > userId order by user_id   limit 100";
+*/
+        //exitsCountSql = exitsCountSql.replace("ids", ids);
+        //exitsPageSql = exitsPageSql.replace("ids", ids);
+        //String countResult = query(exitsCountSql);
+        //JSONObject result = JSONObject.parseObject(countResult);
+        //Integer total = Integer.parseInt(result.getJSONObject("data").getJSONArray("rows").getJSONArray(0).get(0).toString());
+        ;
+        //int totalTimes = (total + pageSize - 1) / pageSize;
+        int cntTime = 0;
+        while (cntTime < total -1) {
+            String exitsPageSql = "select * from wlt_whitelist a where a.user_id  in (ids)  and type = 'OPTION_OPEN'    limit 100";
 
+            exitsPageSql = exitsPageSql.replace("userId", userIds[0].toString());
+
+            int end = cntTime * pageSize + 100;
+            if (end >= array.length) {
+                end = array.length;
             }
-            cnt++;
+            final String[] copyOfRange = Arrays.copyOfRange(array, cntTime * pageSize, end + 1);
+            exitsPageSql = exitsPageSql.replace("ids", StringUtils.join(copyOfRange, ","));
+            String query = query(exitsPageSql);
+            JSONArray results = JSONObject.parseObject(query).getJSONObject("data").getJSONArray("rows");
+            System.out.println("循环:" + cntTime + "结果:" + results.size());
+            cntTime++;
+
+
+            if (results == null || results.size() == 0) {
+                continue;
+            }
+            results.stream().forEach(o -> {
+                JSONArray e = (JSONArray) o;
+                userIds[0] = e.getInteger(1);
+                existId.append(userIds[0]).append(",");
+            });
+
         }
         //生成白名单sql
         if (StringUtils.isBlank(ids)) {
@@ -235,8 +238,7 @@ public class AutoWriteWhitelistToRemote {
         String id;
         StringBuffer sb = new StringBuffer();
         while ((id = br.readLine()) != null) {
-            System.out.println(id);
-            sb.append(id.trim()).append(",");
+            sb.append(id).append(",");
         }
         String ids = sb.toString();
         ids = ids.substring(0, ids.length() - 1);
@@ -310,7 +312,7 @@ public class AutoWriteWhitelistToRemote {
     }
 
     public static void main(String[] args) throws Exception {
-        final AutoWriteWhitelistToRemote autoWriteWhitelistToRemote = new AutoWriteWhitelistToRemote();
+        final AutoWriteWhitelistToRemote_back autoWriteWhitelistToRemote = new AutoWriteWhitelistToRemote_back();
         autoWriteWhitelistToRemote.test();
     }
 
