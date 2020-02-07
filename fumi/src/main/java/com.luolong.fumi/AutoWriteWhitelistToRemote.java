@@ -199,7 +199,13 @@ public class AutoWriteWhitelistToRemote {
             exitsPageSql = exitsPageSql.replace("ids", join);
             String countResult = query(exitsCountSql);
             JSONObject result = JSONObject.parseObject(countResult);
-            Integer total = result.getJSONObject("data").getJSONArray("rows").getJSONArray(0).getInteger(0);
+            final JSONArray jsonArray = result.getJSONObject("data").getJSONArray("rows");
+            Integer total = 0;
+            if (jsonArray != null) {
+                total = jsonArray
+                        .getJSONArray(0).getInteger(0);
+            }
+
             int totalTimes = (total + pageSize - 1) / pageSize;
             int cntTime = 0;
             while (cntTime < totalTimes) {
