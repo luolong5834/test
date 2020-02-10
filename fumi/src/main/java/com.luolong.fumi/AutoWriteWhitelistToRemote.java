@@ -37,6 +37,7 @@ public class AutoWriteWhitelistToRemote {
     //final StringBuffer existId = new StringBuffer("");
     String newLine = "\n";
     final String sqlFile = "/Users/longluo/Documents/whiltelist_exist.sql";
+    final String sqlFile2 = "/Users/longluo/Documents/whiltelist_exist.txt";
     final String whiteFile = "/Users/longluo/Documents/whitelist.txt";
     String uri = "http://10.100.2.34:9123";
     long sqlTotal;
@@ -44,7 +45,7 @@ public class AutoWriteWhitelistToRemote {
     boolean writeRemote = true;
 
     public void test() {
-        try (BufferedWriter bw = Files.newBufferedWriter(Paths.get("", sqlFile))) {
+        try (BufferedWriter bw = Files.newBufferedWriter(Paths.get("", sqlFile));BufferedWriter exitsBw = Files.newBufferedWriter(Paths.get("", sqlFile2));) {
             //登陆
             login();
             //组装需要加入的白名单str
@@ -72,6 +73,12 @@ public class AutoWriteWhitelistToRemote {
             String sql = content.delete(content.length() - 2, content.length()).append(";").toString();
             if (writeFile) {
                 bw.write(sql);
+
+            }
+            final String[] split = exists.split(",");
+            for (int i = 0; i < split.length; i++) {
+                exitsBw.write(split[i]);
+                exitsBw.newLine();
             }
             //提交sql
             if (writeRemote) {
