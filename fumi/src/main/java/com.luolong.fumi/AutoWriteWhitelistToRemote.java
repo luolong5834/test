@@ -36,20 +36,40 @@ public class AutoWriteWhitelistToRemote {
     final int pageSize = 100;
     //final StringBuffer existId = new StringBuffer("");
     String newLine = "\n";
-    final String sqlFile = "/Users/longluo/Documents/whiltelist_exist.sql";
-    final String sqlFile2 = "/Users/longluo/Documents/whiltelist_exist.txt";
-    final String whiteFile = "/Users/longluo/Documents/whitelist.txt";
+    /**
+     * 生成好sql，复制这个文件的到审核平台
+     */
+    final String toAddRemoteFilePath = "/Users/longluo/Documents/whiltelist_exist.sql";
+    /**
+     * 发现已存在的userid，保存到这个文体
+     * 发给运营，运营就不需要重复邀请了
+     */
+    final String saveExistsFilePath = "/Users/longluo/Documents/whiltelist_exist.txt";
+    /**
+     * 需要增加白名单的路径
+     */
+    final String needToAddFilePath = "/Users/longluo/Documents/whitelist.txt";
     String uri = "http://10.100.2.34:9123";
     long sqlTotal;
+    /**
+     * 是否吧sql谢到文件
+     */
     boolean writeFile = true;
+    /**
+     * 是否吧sql自动写 dao 远程。
+     *
+     */
     boolean writeRemote = true;
 
-    public void test() {
-        try (BufferedWriter bw = Files.newBufferedWriter(Paths.get("", sqlFile));BufferedWriter exitsBw = Files.newBufferedWriter(Paths.get("", sqlFile2));) {
+    /**
+     *
+     */
+    public void doRunWhiteFile() {
+        try (BufferedWriter bw = Files.newBufferedWriter(Paths.get("", toAddRemoteFilePath)); BufferedWriter exitsBw = Files.newBufferedWriter(Paths.get("", saveExistsFilePath));) {
             //登陆
             login();
             //组装需要加入的白名单str
-            String ids = getIdsFromFile(whiteFile);
+            String ids = getIdsFromFile(needToAddFilePath);
             //组装已存在白名单查询sql
             String exists = getExistsIds(ids);
             String[] whites = ids.split(",");
@@ -73,7 +93,6 @@ public class AutoWriteWhitelistToRemote {
             String sql = content.delete(content.length() - 2, content.length()).append(";").toString();
             if (writeFile) {
                 bw.write(sql);
-
             }
             final String[] split = exists.split(",");
             for (int i = 0; i < split.length; i++) {
@@ -92,7 +111,7 @@ public class AutoWriteWhitelistToRemote {
             System.out.println(String.format("总数：%s, 已存在：%s, 重复：%s, 最终成功添加白名单：%s, 计算结果：%s", whites.length, existLen, repeats.size(), needWhite, execute));
             System.out.println("重复userId为:" + repeats);
             System.out.println("已存在userId:" + exists);
-            System.out.println("生成的sql文件地址：" + sqlFile);
+            System.out.println("生成的sql文件地址：" + toAddRemoteFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -324,7 +343,7 @@ public class AutoWriteWhitelistToRemote {
 
     public static void main(String[] args) throws Exception {
         final AutoWriteWhitelistToRemote autoWriteWhitelistToRemote = new AutoWriteWhitelistToRemote();
-        autoWriteWhitelistToRemote.test();
+        autoWriteWhitelistToRemote.doRunWhiteFile();
     }
 
 

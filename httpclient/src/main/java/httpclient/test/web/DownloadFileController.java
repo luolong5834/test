@@ -1,5 +1,6 @@
 package httpclient.test.web;
 
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,9 +30,15 @@ public class DownloadFileController {
         try (ServletOutputStream outputStream = response.getOutputStream(); FileInputStream in = new FileInputStream(filePath);) {
             byte[] b = new byte[1024];
             int n = 0;
-            while ( (n = in.read(b)) != -1) {
-                outputStream.write(b,0,n);
+            while ((n = in.read(b)) != -1) {
+                outputStream.write(b, 0, n);
             }
         }
+    }
+
+    @Retryable
+    public void test() {
+        System.out.println("luolong");
+
     }
 }
