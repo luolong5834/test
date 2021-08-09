@@ -21,7 +21,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <org.elasticsearch.client.version>5.6.3</org.elasticsearch.client.version>
+        <org.elasticsearch.client.version>6.8.17</org.elasticsearch.client.version>
         <java.version>1.8</java.version>
     </properties>
     <dependencies>
